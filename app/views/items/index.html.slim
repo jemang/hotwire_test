@@ -1,0 +1,14 @@
+h1 Listing items
+
+= turbo_stream_from 'items'
+.card.card-body
+  .row
+    .col-md-6
+      = turbo_frame_tag 'items' do
+        = render @items
+    .col-md-6
+      fieldset.form-fieldset
+        = turbo_frame_tag 'item_form', src: new_item_path, target: '_top'
+
+      // stream show //
+      = turbo_frame_tag 'item_display'

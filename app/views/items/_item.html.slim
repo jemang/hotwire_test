@@ -1,0 +1,17 @@
+- unless item.destroyed?
+  = turbo_frame_tag dom_id(item) do
+    .card.mb-1
+      .card-body
+        table
+          tr
+            td width='90%' = item.name
+            td = link_to 'Edit', edit_item_path(item), class: 'btn btn-sm btn-primary ml-2'
+            td = button_to 'Destroy', item, method: :delete, class: 'btn btn-sm btn-danger'
+            td = link_to "Show", item_path(item, display: true), data: { turbo_frame: 'item_display' }, class: 'btn btn-sm btn-dark'
+
+        .row.mt-2
+          .col-sm-2
+            = button_to "Like (#{item.like_count})", item_likes_path(item), method: :post, class: 'btn btn-pill btn-sm btn-outline-success'
+          .col-sm-2
+            = button_to "Unlike (#{item.unlike_count})", item_unlikes_path(item), method: :post, class: 'btn btn-pill btn-sm btn-outline-danger'
+          .col

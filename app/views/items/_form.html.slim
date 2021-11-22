@@ -1,0 +1,14 @@
+= simple_form_for @item do |f|
+  - if @item.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      ul
+        - @item.errors.full_messages.each do |message|
+          li = message
+
+  table
+    tr
+      td width='90%' = f.text_field :name, placeholder: 'new item..', class: 'form-control ml-2'
+      td.px-1 = f.submit 'confirm', class: 'btn btn-sm btn-success'
+      - if params[:action] == 'edit'
+        td = link_to 'Back', items_path, class: 'btn btn-sm btn-dark'

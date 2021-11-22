@@ -1,0 +1,9 @@
+= turbo_frame_tag 'item_display' do
+  .card
+    .card-header
+      .card-title.mx-auto
+        h3.text-muted.text-center = @item.name
+    .card-body
+    .card-footer
+      .d-flex
+        = link_to 'close', items_path, class: 'ms-auto btn btn-sm btn-pill btn-outline-danger'
