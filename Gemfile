@@ -50,6 +50,8 @@ gem "sassc-rails", "~> 2.1"
 # gem list
 gem "slim-rails"
 gem 'simple_form'
+gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
+gem "responders", github: 'heartcombo/responders', branch: 'main'
 
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
