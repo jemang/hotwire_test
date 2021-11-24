@@ -1,14 +1,11 @@
-= simple_form_for @item do |f|
-  - if @item.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
-      ul
-        - @item.errors.full_messages.each do |message|
-          li = message
+= simple_form_for @item, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |f|
+
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   table
     tr
-      td width='90%' = f.text_field :name, placeholder: 'new item..', class: 'form-control ml-2'
+      td width='90%' = f.input :name, label: false, placeholder: 'New Item..', class: 'form-control ml-2'
       td.px-1 = f.submit 'confirm', class: 'btn btn-sm btn-success'
       - if params[:action] == 'edit'
         td = link_to 'Back', items_path, class: 'btn btn-sm btn-dark'

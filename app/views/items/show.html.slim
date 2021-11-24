@@ -1,6 +1,5 @@
 // render show with ID //
-/ - if params[:display]
-/   = render 'display' if @item
-/ - else
-/   = render 'item', item: @item
-= render 'display'
+- if params[:display]
+  = render 'display'
+- else
+  = render 'item', item: @item

@@ -4,6 +4,9 @@
       .card-title.mx-auto
         h3.text-muted.text-center = @item.name
     .card-body
-    .card-footer
-      .d-flex
-        = link_to 'close', items_path, class: 'ms-auto btn btn-sm btn-pill btn-outline-danger'
+      = turbo_stream_from 'commends'
+      = turbo_frame_tag 'commends' do
+        = render @item.commends
+
+      fieldset.form-fieldset.mt-3
+        = turbo_frame_tag 'commend_form', src: new_item_commend_path(@item), target: '_top'

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[show edit update destroy]
+  respond_to :turbo_stream, only: %i[create update destroy]
 
   # GET /items or /items.json
   def index
@@ -22,37 +23,43 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
-        format.turbo_stream
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@item, partial: 'items/form', locals: { item: @item }) }
-      end
-    end
+    @item.save
+    # respond_with(@item)
+    respond_with_turbo(@item, redirect: true)
+    # respond_to do |format|
+    #   if @item.save
+    #     format.html { redirect_to items_path, notice: "Item was successfully created." }
+    #     # format.turbo_stream
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     # format.turbo_stream { render turbo_stream: turbo_stream.replace(@item, partial: 'items/form', locals: { item: @item }) }
+    #   end
+    # end
   end
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
-        format.turbo_stream
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
-    end
+    @item.update(item_params)
+    respond_with(@item)
+    # respond_with_turbo(@item)
+    # respond_to do |format|
+    #   if @item.update(item_params)
+    #     format.html { redirect_to @item, notice: "Item was successfully updated." }
+    #     format.turbo_stream
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /items/1 or /items/1.json
   def destroy
     @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
-      # format.turbo_stream {" "}
-    end
+    respond_with(@item)
+    # respond_to do |format|
+    #   format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
+    #   # format.turbo_stream {" "}
+    # end
   end
 
   private
