@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :items do
+    resources :commends
     resources :likes, only: :create
     resources :unlikes, only: :create
   end
