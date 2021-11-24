@@ -1,0 +1,7 @@
+= turbo_frame_tag dom_id(commend) do
+  .card.mb-1
+    .card-body
+      .d-flex
+        = commend.body
+        .ms-auto
+          = button_to 'remove', item_commend_path(@item, commend), method: :delete, class: 'btn btn-sm btn-danger' if @item

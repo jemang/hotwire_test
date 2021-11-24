@@ -1,0 +1,12 @@
+= simple_form_for([@item, @commend], data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :body, label: false
+    = f.input :item_id, as: :hidden, input_html: { value: @item }
+
+  .form-actions.d-flex
+    .ms-auto.mt-3
+      = link_to 'close', items_path, class: 'btn btn-danger me-1'
+      = f.button :submit, class: 'btn btn-primary'
