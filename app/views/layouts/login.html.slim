@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title HotwireTest
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+
+  body.border-top-wide.border-primary.d-flex.flex-column cz-shortcut-listen="true"
+    .page.page-center
+      .container-tight.py-4
+        .card.card-md
+          .card-body
+            = yield
