@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_070611) do
     t.boolean "complete", default: false
     t.integer "like_count", default: 0
     t.integer "unlike_count", default: 0
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
