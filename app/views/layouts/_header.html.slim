@@ -7,7 +7,7 @@ header.navbar.navbar-expand-md.navbar-light.d-print-none
     .navbar-nav.flex-row.order-md-last
       .nav-item.d-none.d-md-flex.me-3
         .btn-list
-          a.btn.btn-outline-white href="https://github.com/tabler/tabler" rel="noreferrer" target="_blank"
+          a.btn.btn-outline-white href="https://github.com/jemang/hotwire_test" rel="noreferrer" target="_blank"
             /! Download SVG icon from http://tabler-icons.io/i/brand-github
             svg.icon.text-github fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox=("0 0 24 24") width="24" xmlns="http://www.w3.org/2000/svg"
               path d=("M0 0h24v24H0z") fill="none" stroke="none"
@@ -29,12 +29,9 @@ header.navbar.navbar-expand-md.navbar-light.d-print-none
         a.nav-link.d-flex.lh-1.text-reset.p-0 aria-label=("Open user menu") data-bs-toggle="dropdown" href="#"
           span.avatar.avatar-sm style=("background-image: url(./user.png)")
         .d-none.d-xl-block.ps-2
-          div Jemang
-          .mt-1.small.text-muted UI Designer
+          .mt-1.small.text-muted
+            = current_user.fullname.upcase
         .dropdown-menu.dropdown-menu-end.dropdown-menu-arrow
-          a.dropdown-item href="#"  Set status
           a.dropdown-item href="#"  Profile &amp; account
-          a.dropdown-item href="#"  Feedback
           .dropdown-divider
-          a.dropdown-item href="#"  Settings
           = button_to "Logout", destroy_user_session_path, method: :delete, class: 'dropdown-item'

@@ -15,3 +15,6 @@
           .col-sm-2
             = button_to "Unlike (#{item.unlike_count})", item_unlikes_path(item), method: :post, class: 'btn btn-pill btn-sm btn-outline-danger'
           .col
+            .d-flex
+              .ms-auto.small.text-muted.mt-2
+                | Author : #{current_user.fullname}
