@@ -5,6 +5,7 @@
   .form-inputs
     = f.input :body, label: false
     = f.input :item_id, as: :hidden, input_html: { value: @item }
+    = f.input :user_id, as: :hidden, input_html: {value: current_user.id}
 
   .form-actions.d-flex
     .ms-auto.mt-3

@@ -3,6 +3,7 @@ require 'application_responder'
 class ApplicationController < ActionController::Base
   layout :set_layout
   before_action :authenticate_user!
+  protect_from_forgery prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   self.responder = ApplicationResponder
