@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   layout :set_layout
   before_action :authenticate_user!
   protect_from_forgery prepend: true
+  before_action :set_current_user
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   self.responder = ApplicationResponder
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def set_layout
     user_signed_in? ? 'application' : 'login'
+  end
+
+  def set_current_user
+    Current.user = current_user
   end
 
   protected

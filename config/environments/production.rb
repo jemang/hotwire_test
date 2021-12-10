@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "hotwire_test_production"
+  # config.active_job.queue_name_prefix = "hotwire_7rc_production"
 
   config.action_mailer.perform_caching = false
 
@@ -111,4 +111,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # Inserts middleware to perform automatic shard swapping. The `shard_selector` hash
+  # can be used to pass options to the `ShardSelector` middleware. The `lock` option is
+  # used to determine whether shard swapping should be prohibited for the request.
+  #
+  # The `shard_resolver` option is used by the middleware to determine which shard
+  # to switch to. The application must provide a mechanism for finding the shard name
+  # in a proc. See guides for an example.
+  # config.active_record.shard_selector = { lock: true }
+  # config.active_record.shard_resolver = ->(request) { Tenant.find_by!(host: request.host).shard }
 end
